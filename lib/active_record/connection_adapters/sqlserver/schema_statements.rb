@@ -372,6 +372,10 @@ module ActiveRecord
         def identity_column(table_name)
           columns(table_name).detect(&:is_identity?)
         end
+        def primary_key_column(table_name)
+          # this will only get a single primary key, not a composite
+          columns(table_name).detect { |c| c.primary}
+        end
 
       end
     end

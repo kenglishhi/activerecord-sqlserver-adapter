@@ -275,7 +275,7 @@ module ActiveRecord
       end
 
       def primary_key(table_name)
-        identity_column(table_name).try(:name)
+         identity_column(table_name).try(:name) || primary_key_column(table_name).try(:name)
       end
       
       # === SQLServer Specific (DB Reflection) ======================== #
